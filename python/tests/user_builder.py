@@ -9,24 +9,18 @@ class UserBuilder:
         self._verified = True
 
     def build(self) -> User:
-        user = User(self._name, self._email, self._age, self._address, self._verified)
-        self.__init__()
-        return user
+        return User(self._name, self._email, self._age, self._address, self._verified)
 
-    def reset(self) -> None:
-        self.__init__()
+    def minor(self):
+        self._age = 15
+        return self
 
-    def set_name(self, name: str) -> None:
-        self._name = name
+    def not_verified(self):
+        self._verified = False
+        return self
 
-    def set_email(self, email: str) -> None:
-        self._email = email
+    def foreign(self):
+        self._address = Address("33 quai d'Orsay", "", "Paris", "75007", "France")
+        return self
 
-    def set_age(self, age: int) -> None:
-        self._age = age
 
-    def set_address(self, address: Address) -> None:
-        self._address = address
-
-    def set_verified(self, is_verified: bool) -> None:
-        self._verified = is_verified
