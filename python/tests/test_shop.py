@@ -30,13 +30,12 @@ def test_cannot_order_if_not_verified(fsf_address):
     user = User(
         name="bob",
         email="bob@domain.tld",
-        age=16,
+        age=19, # Change the age to trigger the case where the user is not verified but is old enough to order
         address=fsf_address,
         verified=False,
     )
 
-    assert not Shop.can_order(user)
-
+    assert not Shop.can_order(user) # No need to modify the test, this assertion is correct
 
 def test_foreigners_must_be_foreign_fee(paris_address):
     user = User(
